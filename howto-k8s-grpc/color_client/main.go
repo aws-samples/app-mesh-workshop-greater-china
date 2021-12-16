@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	pb "github.com/aws/aws-app-mesh-examples/walkthroughs/howto-grpc/color_client/color"
+	pb "github.com/aws/github.com/aws-samples/app-mesh-workshop-greater-china/howto-grpc/color_client/color"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

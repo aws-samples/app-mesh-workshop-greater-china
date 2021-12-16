@@ -16,7 +16,7 @@
 
 ## 实验准备
 
-1. [在 EKS 上安装 App Mesh](https://github.com/aws/aws-app-mesh-examples/blob/main/walkthroughs/eks)
+1. [在 EKS 上安装 App Mesh](https://github.com/aws-samples/app-mesh-workshop-greater-china/tree/main/eks)
 2.  运行以下命令以检查正在运行的appmesh controller版本:
 
 ```
@@ -25,18 +25,18 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 3.   安装 Docker， 用于构建示例应用的镜像。
 
-4.   克隆仓库并进入到 `walkthroughs/howto-k8s-outlier-detection` 文件夹，所有命令都将从这个位置运行
+4.   克隆仓库并进入到 `howto-k8s-outlier-detection` 文件夹，所有命令都将从这个位置运行
 
 ```
-git clone https://github.com/aws/aws-app-mesh-examples
-cd walkthroughs/howto-k8s-outlier-detection
+git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+cd howto-k8s-outlier-detection
 ```
 
 5.   设置环境变量：
 
 ```
 export AWS_ACCOUNT_ID=<your_account_id>
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_REGION=cn-northwest-1
 ```
 
 
@@ -153,13 +153,13 @@ aws appmesh describe-virtual-node --virtual-node-name colorapp_howto-k8s-outlier
 
 `front` 通过调用 `colorapp` 的 `/get`接口 获取颜色。 `front` 可以通过向 `/fault` 接口发出请求来向 `colorapp` 注入故障。
 
-当 `colorapp` 的一个实例收到这个请求时，它会开始在 `/get` 接口上返回 500 Internal Service Error。 
+当 `colorapp` 的一个实例收到这个请求时，它会开始在 `/get` 接口上返回 500 Internal Service Error。
 
 故障可以通过` /recover `接口恢复。
 
 
 
-`front` 还记录后端 `colorapp` 主机和每个 `colorapp` 实例的响应状态的统计信息。 
+`front` 还记录后端 `colorapp` 主机和每个 `colorapp` 实例的响应状态的统计信息。
 
 统计信息可以通过`/stats` 检索并使用`/reset_stats` 重置。
 

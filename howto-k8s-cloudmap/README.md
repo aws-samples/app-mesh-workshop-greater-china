@@ -27,7 +27,7 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 ## 部署
 
-1. 克隆此仓库，然后进入`walkthrough/howto-k8s-cloudmap`文件夹，所有的命令都是在此文件夹下运行。
+1. 克隆此仓库，然后进入`howto-k8s-cloudmap`文件夹，所有的命令都是在此文件夹下运行。
 2. 你的 **Account ID**:
     ```
     export AWS_ACCOUNT_ID=<your_account_id>

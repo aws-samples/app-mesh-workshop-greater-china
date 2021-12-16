@@ -7,7 +7,7 @@
 
 ## 实验准备
 
-1. [在 EKS 上安装 App Mesh](https://github.com/aws/aws-app-mesh-examples/blob/main/walkthroughs/eks)
+1. [在 EKS 上安装 App Mesh](https://github.com/aws-samples/app-mesh-workshop-greater-china/tree/main/eks)
 2. v1beta2 示例需要[aws-app-mesh-controller-for-k8s](https://github.com/aws/aws-app-mesh-controller-for-k8s) 版本大于等于[v1.0.0](https://github.com/aws/aws-app-mesh-controller-for-k8s/releases/tag/v1.0.0) 。 运行以下命令以检查正在运行的控制器版本:
 
 ```
@@ -16,18 +16,18 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 3.   安装 Docker， 用于构建示例应用的镜像。
 
-4.   克隆仓库并进入到 `walkthroughs/howto-k8s-grpc` 文件夹，所有命令都将从这个位置运行
+4.   克隆仓库并进入到 `howto-k8s-grpc` 文件夹，所有命令都将从这个位置运行
 
      ```
-     git clone https://github.com/aws/aws-app-mesh-examples
-     cd walkthroughs/howto-k8s-grpc
+     git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+     cd howto-k8s-grpc
      ```
 
 5.   设置环境变量：
 
      ```
      export AWS_ACCOUNT_ID=<your_account_id>
-     export AWS_DEFAULT_REGION=us-west-2
+     export AWS_DEFAULT_REGION=cn-northwest-1
      ```
 
 6.   **VPC_ID** 环境变量设置为启动 Kubernetes pod 的 VPC。 VPC 将用于使用 `create-private-dns-namespace` API 创建私有 DNS 命名空间。 要查找 EKS 集群的 VPC，您可以使用 `aws eks describe-cluster`。
@@ -45,13 +45,13 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
      ./deploy.sh
      ```
 
-     >   请注意，示例应用使用 go 模块。 如果您在部署期间无法访问 [https://proxy.golang.org](https://proxy.golang.org/)，可以通过设置 `GO_PROXY=direct` 来覆盖 GOPROXY
+     >   请注意，示例应用使用 go 模块。 如果您在部署期间无法访问 [https://goproxy.io](https://goproxy.io/)，可以通过设置 `GO_PROXY=direct` 来覆盖 GOPROXY
 
      ```
      GO_PROXY=direct ./deploy.sh
      ```
 
-8.  设置[端口转发](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) ，将本地计算机的请求路由到**client ** pod。 本地端口由您决定，在本实验中，我们假设本地端口为 **7000**。
+8.  设置[端口转发](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) ，将本地计算机的请求路由到 **client** pod。 本地端口由您决定，在本实验中，我们假设本地端口为 **7000**。
 
     ```
     kubectl port-forward pod/client-xxxxxxxx-xxxx -n howto-k8s-grpc 7000:8080
@@ -70,7 +70,7 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 1.  使用以下命令来查看client应用程序日志：
 
     ```
-     kubectl logs -f client-xxxxx-xxxx -n howto-k8s-grpc app 
+     kubectl logs -f client-xxxxx-xxxx -n howto-k8s-grpc app
     ```
 
     ![image-20210727052250922](https://pingfan.s3-us-west-2.amazonaws.com/pic2/v6oh1.png)
@@ -108,7 +108,7 @@ rpc error: code = Unimplemented desc =
 这是因为我们当前的Mesh仅配置为路由 gRPC 方法`GetColor`:
 
 ```yaml
-cat _output/manifest.yaml 
+cat _output/manifest.yaml
 
 ..........
 apiVersion: appmesh.k8s.aws/v1beta2

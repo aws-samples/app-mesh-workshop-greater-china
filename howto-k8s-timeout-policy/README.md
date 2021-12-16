@@ -25,14 +25,14 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 ## 部署
 
-1. 克隆此仓库，然后进入`walkthrough/howto-k8s-timeout-policy`文件夹，所有的命令都是在此文件夹下运行。
+1. 克隆此仓库，然后进入`howto-k8s-timeout-policy`文件夹，所有的命令都是在此文件夹下运行。
 2. **你的** account id:
     ```
     export AWS_ACCOUNT_ID=<your_account_id>
     ```
-3. **Region** e.g. us-west-2
+3. **Region** e.g. cn-northwest-1
     ```
-    export AWS_DEFAULT_REGION=us-west-2
+    export AWS_DEFAULT_REGION=cn-northwest-1
     ```
 4. **(可选项) 指定 Envoy Image 版本** 如果要使用与[默认版本](https://github.com/aws/eks-charts/tree/master/stable/appmesh-controller#configuration)不同的Envoy 容器镜像，运行 `helm upgrade` 去覆盖 `sidecar.image.repository` 和 `sidecar.image.tag` 字段。
 5. **VPC_ID** 环境变量设置为启动 Kubernetes pods 的VPC。`create-private-dns-namespace` API会使用VPC_ID在AWS中配置私有DNS namespace . 要查看EKS 集群所在的VPC，可以使用 `aws eks describe-cluster` 。关于为何Cloud Map需要 PrivateDnsNamespace，可以参考[文档](#1-how-can-i-use-cloud-map-namespaces-other-than-privatednsnamespace)。

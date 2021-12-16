@@ -6,7 +6,7 @@
 
 在本实验中，我们将演示如何在 App Mesh 和 EKS 中使用连接池实现熔断(circuit breaking)功能。
 
-熔断旨在最大限度地减少故障的影响，防止它们级联和复合，并确保端到端的性能。 
+熔断旨在最大限度地减少故障的影响，防止它们级联和复合，并确保端到端的性能。
 
 Envoy 通过熔断开关来控制服务质量。 App Mesh中的Connection Pool等同于[Envoy的熔断配置](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/cluster/circuit_breaker.proto)。连接池限制了一个 Envoy 可以同时与上游集群中的所有主机建立的连接数。
 
@@ -16,7 +16,7 @@ Envoy 通过熔断开关来控制服务质量。 App Mesh中的Connection Pool�
 
 ## 实验准备
 
-1. [在 EKS 上安装 App Mesh](https://github.com/aws/aws-app-mesh-examples/blob/main/walkthroughs/eks)
+1. [在 EKS 上安装 App Mesh](https://github.com/aws-samples/app-mesh-workshop-greater-china/tree/main/eks)
 2. 运行以下命令以检查正在运行的appmesh控制器版本:
 
 ```
@@ -25,18 +25,18 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 3.   安装 Docker， 用于构建示例应用的镜像。
 
-4.   克隆仓库并进入到 `walkthroughs/howto-k8s-connection-pools ` 文件夹，所有命令都将从这个位置运行
+4.   克隆仓库并进入到 `howto-k8s-connection-pools ` 文件夹，所有命令都将从这个位置运行
 
 ```
-git clone https://github.com/aws/aws-app-mesh-examples
-cd aws-app-mesh-examples/walkthroughs/howto-k8s-connection-pools 
+git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+cd howto-k8s-connection-pools
 ```
 
 5.   设置环境变量：
 
 ```
 export AWS_ACCOUNT_ID=<your_account_id>
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_REGION=cn-northwest-1
 ```
 
 6.   进行应用部署：

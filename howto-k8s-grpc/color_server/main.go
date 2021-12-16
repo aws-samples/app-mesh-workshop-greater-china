@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	pb "github.com/aws/aws-app-mesh-examples/walkthroughs/howto-grpc/color_server/color"
+	pb "github.com/aws/github.com/aws-samples/app-mesh-workshop-greater-china/howto-grpc/color_server/color"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	health "google.golang.org/grpc/health/grpc_health_v1"

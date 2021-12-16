@@ -22,9 +22,10 @@ helm upgrade -i appmesh-controller eks/appmesh-controller \
     --set serviceAccount.create=false \
     --set serviceAccount.name=appmesh-controller \
     --set image.repository=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn/amazon/appmesh-controller \
-    --set init.image.repository=427429333571.dkr.ecr.cn-northwest-1.amazonaws.com.cn/appmesh/aws-appmesh-proxy-route-manager \
-    --set sidecar.image.repository=427429333571.dkr.ecr.cn-northwest-1.amazonaws.com.cn/appmesh/aws-appmesh-envoy \
-    --set sidecar.image.tag=v1.19.1.0-prod \
+    --set init.image.repository=919830735681.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws-appmesh-proxy-route-manager \
+    --set init.iamge.tag=v4-prod \
+    --set sidecar.image.repository=919830735681.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws-appmesh-envoy \
+    --set sidecar.image.tag=v1.20.0.0-prod \
     --set tracing.enabled=true \
     --set tracing.provider=jaeger \
     --set tracing.address=appmesh-jaeger.appmesh-system \

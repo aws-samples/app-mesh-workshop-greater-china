@@ -2,7 +2,7 @@
 
 本实验演示了如何访问Mesh之外的外部服务。
 
-本实验将创建两个 Kubernetes 命名空间：`howto-k8s-egress` 和 `mesh-external`。 
+本实验将创建两个 Kubernetes 命名空间：`howto-k8s-egress` 和 `mesh-external`。
 
 *   Mesh 将只应用在命名空间 `howto-k8s-egress` 和其中的资源， `mesh-external` 不是 Mesh 的一部分。
 *    `mesh-external` 将有两个服务 `red` 和 `blue`，我们将展示从 Mesh 访问这两个外部服务的情况：
@@ -11,7 +11,7 @@
 
 ## 实验准备
 
-1. [在 EKS 上安装 App Mesh](https://github.com/aws/aws-app-mesh-examples/blob/main/walkthroughs/eks)
+1. [在 EKS 上安装 App Mesh](https://github.com/aws-samples/app-mesh-workshop-greater-china/tree/main/eks)
 2. [aws-app-mesh-controller-for-k8s](https://github.com/aws/aws-app-mesh-controller-for-k8s) 版本大于等于[v1.0.0](https://github.com/aws/aws-app-mesh-controller-for-k8s/releases/tag/v1.0.0) 。 运行以下命令以检查正在运行的控制器版本:
 
 ```
@@ -20,18 +20,18 @@ $ kubectl get deployment -n appmesh-system appmesh-controller -o json | jq -r ".
 
 3.   安装 Docker， 用于构建示例应用的镜像。
 
-4.   克隆仓库并进入到 `walkthroughs/howto-k8s-egress` 文件夹，所有命令都将从这个位置运行
+4.   克隆仓库并进入到 `howto-k8s-egress` 文件夹，所有命令都将从这个位置运行
 
 ```
-git clone https://github.com/aws/aws-app-mesh-examples
-cd aws-app-mesh-examples/walkthroughs/howto-k8s-egress
+git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+cd howto-k8s-egress
 ```
 
 5.   设置环境变量：
 
 ```
 export AWS_ACCOUNT_ID=<your_account_id>
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_REGION=cn-northwest-1
 ```
 
 6.   进行应用部署：

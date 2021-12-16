@@ -15,15 +15,15 @@
 
 ## 部署
 
-1. 克隆此仓库，然后进入`walkthrough/howto-k8s-http-headers`文件夹，所有的命令都是在此文件夹下运行。
+1. 克隆此仓库，然后进入`howto-k8s-http-headers`文件夹，所有的命令都是在此文件夹下运行。
 
 2. **你的** account id:
 
     export AWS_ACCOUNT_ID=<your_account_id>
 
-3. **Region** e.g. us-west-2
+3. **Region** e.g. cn-northwest-1
 
-    export AWS_DEFAULT_REGION=us-west-2
+    export AWS_DEFAULT_REGION=cn-northwest-1
 
 4. **(可选项) 指定 Envoy Image 版本** 如果要使用与[默认版本](https://github.com/aws/eks-charts/tree/master/stable/appmesh-controller#configuration)不同的Envoy 容器镜像，运行 `helm upgrade` 去覆盖 `sidecar.image.repository` 和 `sidecar.image.tag` 字段。
 

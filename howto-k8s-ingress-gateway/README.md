@@ -24,19 +24,19 @@ v1.4.0
 
 2.   安装 Docker， 用于构建示例应用的镜像。
 
-3.   克隆仓库并进入到 `walkthroughs/howto-k8s-ingress-gateway` 文件夹，所有命令都将从这个位置运行
+3.   克隆仓库并进入到 `howto-k8s-ingress-gateway` 文件夹，所有命令都将从这个位置运行
 
      ```
-     git clone https://github.com/aws/aws-app-mesh-examples
-     cd walkthroughs/howto-k8s-ingress-gateway
+     git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+     cd howto-k8s-ingress-gateway
      ```
 
 4.   设置环境变量：
 
      ```
      export AWS_ACCOUNT_ID=<your_account_id>
-     export AWS_DEFAULT_REGION=us-west-2
-     
+     export AWS_DEFAULT_REGION=cn-northwest-1
+
      # 参考 https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html
      export ENVOY_IMAGE=840364872350.dkr.ecr.us-west-2.amazonaws.com/aws-appmesh-envoy:v1.18.3.0-prod
      ```
@@ -61,7 +61,7 @@ VirtualService `color-paths` 使用 HTTP 路径前缀，来选择后端 VirtualN
 让我们看看部署在 Kubernetes 和 AWS App Mesh 中的 VirtualGateway：
 
 ```bash 
-kubectl get virtualgateway -n howto-k8s-ingress-gateway                                         
+kubectl get virtualgateway -n howto-k8s-ingress-gateway
 NAME         ARN                                                                                                                                 AGE
 ingress-gw   arn:aws:appmesh:us-west-2:112233333455:mesh/howto-k8s-ingress-gateway/virtualGateway/ingress-gw_howto-k8s-ingress-gateway   113s
 
@@ -115,7 +115,7 @@ aws appmesh list-gateway-routes --virtual-gateway-name ingress-gw_howto-k8s-ingr
 流量入口点将是一个链接到 VirtualGateway `ingress-gw` 的 Envoy：
 
 ```bash 
-kubectl get pod -n howto-k8s-ingress-gateway                                                    
+kubectl get pod -n howto-k8s-ingress-gateway
 NAME                        READY   STATUS    RESTARTS   AGE
 blue-574fc6f766-jtc76       2/2     Running   0          13s
 green-5fdb4488cb-mtrsl      2/2     Running   0          13s
@@ -128,7 +128,7 @@ yellow-67b88f8cf4-mtnhq     2/2     Running   0          13s
 `ingress-gw-c9c9b895-rqv9r` 指向 VirtualGateway，可以通过 LoadBalancer 类型的 k8s service访问：
 
 ```bash 
-kubectl get svc -n howto-k8s-ingress-gateway                                                    
+kubectl get svc -n howto-k8s-ingress-gateway
 NAME            TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)          AGE
 color-blue      ClusterIP      10.100.10.91     <none>                                                                   8080/TCP         3m21s
 color-green     ClusterIP      10.100.81.185    <none>                                                                   8080/TCP         3m22s

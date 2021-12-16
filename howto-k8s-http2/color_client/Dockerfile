@@ -1,9 +1,9 @@
 FROM golang:1 AS builder
 
 # Use the default go proxy
-ARG GO_PROXY=https://proxy.golang.org
+ARG GO_PROXY=https://goproxy.io
 
-WORKDIR /go/src/github.com/aws/aws-app-mesh-examples/walkthroughs/howto-http2/color_client
+WORKDIR /go/src/github.com/aws/github.com/aws-samples/app-mesh-workshop-greater-china/howto-http2/color_client
 
 # Set the proxies for the go compiler.
 ENV GOPROXY=$GO_PROXY

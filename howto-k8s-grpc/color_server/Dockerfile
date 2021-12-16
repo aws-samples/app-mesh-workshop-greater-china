@@ -4,7 +4,7 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-RUN curl -LO https://golang.org/dl/go1.17.1.linux-amd64.tar.gz && \
+RUN curl -LO https://go.dev/dl/go1.17.1.linux-amd64.tar.gz && \
     tar -C /usr/local -xzvf go1.17.1.linux-amd64.tar.gz
 
 ENV PATH="${PATH}:/usr/local/go/bin"
@@ -12,9 +12,9 @@ ENV GOPATH="${HOME}/go"
 ENV PATH="${PATH}:${GOPATH}/bin"
 
 # Use the default go proxy
-ARG GO_PROXY=https://proxy.golang.org
+ARG GO_PROXY=https://goproxy.io
 
-WORKDIR /go/src/github.com/aws/aws-app-mesh-examples/walkthroughs/howto-grpc/color_server
+WORKDIR /go/src/github.com/aws/github.com/aws-samples/app-mesh-workshop-greater-china/howto-grpc/color_server
 
 # Set the proxies for the go compiler.
 ENV GOPROXY=$GO_PROXY

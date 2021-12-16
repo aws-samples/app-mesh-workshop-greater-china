@@ -45,12 +45,12 @@ export KUBECONFIG=~/.kube/eksctl/clusters/appmeshtest
 
 为了在Pod创建时自动注入App Mesh组件和代理，我们需要在集群上创建一些自定义资源。为此，我们将使用 *helm*。
 
-*代码仓库*
+*克隆代码仓库*
 
 将克隆代码仓库到适当的目录，然后cd目录中，我们将从该路径运行所有命令。
 ```
-git clone https://github.com/aws/aws-app-mesh-examples.git
-cd aws-app-mesh-examples/walkthroughs/eks/
+git clone https://github.com/aws-samples/app-mesh-workshop-greater-china.git
+cd eks
 ```
 
 *安装App Mesh组件*
@@ -101,7 +101,6 @@ helm upgrade -i appmesh-controller eks/appmesh-controller \
 
 如果在亚马逊云科技中国区域部署，可能会遇到拉取镜像失败的问题。
 使用下面的命令更换亚马逊云科技中国区容器镜像
-#TODO
 ```
 helm upgrade -i appmesh-controller eks/appmesh-controller \
     --namespace appmesh-system \
@@ -109,10 +108,10 @@ helm upgrade -i appmesh-controller eks/appmesh-controller \
     --set serviceAccount.create=false \
     --set serviceAccount.name=appmesh-controller \
     --set image.repository=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn/amazon/appmesh-controller \
-    --set init.image.repository=048912060910.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws/appmesh/aws-appmesh-proxy-route-manager \
-    --set init.iamge.tag=v3-prod \
-    --set sidecar.image.repository=048912060910.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws/appmesh/aws-appmesh-envoy \
-    --set sidecar.image.tag=v1.19.1.0-prod
+    --set init.image.repository=919830735681.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws-appmesh-proxy-route-manager \
+    --set init.iamge.tag=v4-prod \
+    --set sidecar.image.repository=919830735681.dkr.ecr.cn-northwest-1.amazonaws.com.cn/aws-appmesh-envoy \
+    --set sidecar.image.tag=v1.20.0.0-prod
 ```
 
 验证

@@ -1,4 +1,4 @@
-module github.com/aws/aws-app-mesh-examples/walkthroughs/howto-http2/color_server
+module github.com/aws/github.com/aws-samples/app-mesh-workshop-greater-china/howto-http2/color_server
 
 go 1.13
 
